@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 
 interface ExpBlockProps {
     children: ReactNode;
