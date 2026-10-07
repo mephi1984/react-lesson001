@@ -1,25 +1,28 @@
 import './App.css'
-import TextBox from './TextBox.tsx'
-import ExperienceBlock from './ExperienceBlock.tsx'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RootLayout } from './RootLayout.tsx';
+import MainPage from './MainPage.tsx';
+import AboutPage from './AboutPage.tsx';
+import NotFoundPage from './NotFoundPage.tsx';
 
-import photoImg from './assets/photo.jpg' 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    errorElement: <NotFoundPage />, // Обработка 404 и ошибок
+    children: [
+      {
+        index: true, // Маршрут по умолчанию (path: "/")
+        element: <MainPage />,
+      },
+      {
+        path: 'about', // Маршрут "/about"
+        element: <AboutPage />,
+      },
+    ],
+  },
+]);
 
-function App() {
-  let f = ()=>{
-    console.log("hello");
-  }
-
-  return (
-    <>
-      <h1>Резюме</h1>
-      <img src={photoImg}  />
-      <p>Меня зовут Владислав</p>
-      <ExperienceBlock>
-      <TextBox name="React" years={5} onClick={f} />
-      <TextBox name="C++" years={15} onClick={f} />
-      </ExperienceBlock>
-    </>
-  )
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App
