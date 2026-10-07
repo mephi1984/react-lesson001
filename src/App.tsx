@@ -1,11 +1,11 @@
 import './App.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import { RootLayout } from './RootLayout.tsx';
 import MainPage from './MainPage.tsx';
 import AboutPage from './AboutPage.tsx';
 import NotFoundPage from './NotFoundPage.tsx';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <RootLayout />,
